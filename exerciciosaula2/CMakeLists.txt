@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.23)
+project(exerciciosaula2)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(exerciciosaula2 main.cpp)
+add_executable(a1e1 a1e1.cpp)
+add_executable(a2e2 a2e2.cpp)
+add_executable(a2e3 a2e3.cpp)
+add_executable(a2e4 a2e4.cpp)
+add_executable(a2e5 a2e5.cpp)
+add_executable(a2e6 a2e6.cpp)
+add_executable(a2e7 a2e7.cpp)
+add_executable(a2e7switch a2e7switch.cpp)
+add_executable(a2e8 a2e8repetido.cpp)
+add_executable(a2e8lastday a2e8lastday.cpp)

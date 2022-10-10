@@ -1,0 +1,13 @@
+C:/Users/HP/programacao/exerciciosaula2/cmake-build-debug/CMakeFiles/exerciciosaula2.dir
+C:/Users/HP/programacao/exerciciosaula2/cmake-build-debug/CMakeFiles/a1e1.dir
+C:/Users/HP/programacao/exerciciosaula2/cmake-build-debug/CMakeFiles/a2e2.dir
+C:/Users/HP/programacao/exerciciosaula2/cmake-build-debug/CMakeFiles/a2e3.dir
+C:/Users/HP/programacao/exerciciosaula2/cmake-build-debug/CMakeFiles/a2e4.dir
+C:/Users/HP/programacao/exerciciosaula2/cmake-build-debug/CMakeFiles/a2e5.dir
+C:/Users/HP/programacao/exerciciosaula2/cmake-build-debug/CMakeFiles/a2e6.dir
+C:/Users/HP/programacao/exerciciosaula2/cmake-build-debug/CMakeFiles/a2e7.dir
+C:/Users/HP/programacao/exerciciosaula2/cmake-build-debug/CMakeFiles/a2e7switch.dir
+C:/Users/HP/programacao/exerciciosaula2/cmake-build-debug/CMakeFiles/a2e8.dir
+C:/Users/HP/programacao/exerciciosaula2/cmake-build-debug/CMakeFiles/a2e8lastday.dir
+C:/Users/HP/programacao/exerciciosaula2/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/HP/programacao/exerciciosaula2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
