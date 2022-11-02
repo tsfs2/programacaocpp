@@ -1,0 +1,49 @@
+#include <iostream>
+//Ex aula 4 exercicio 1 (4 funcoes, input do array, media, desvio, maior que media)
+using namespace std;                                                                                   
+//input for array                                                                                      
+double average(int a[],int n){                                                                         
+    //int sum=0;                                                                                       
+    //for(int i=0;i<n;i++){                                                                            
+    //    sum+=a[i];                                                                                   
+    //}                                                                                                
+    //return sum;                                                                                      
+    double media;                                                                                      
+    int soma=0;                                                                                        
+    for(int i=0;i<n;i++){                                                                              
+        soma+=a[i];                                                                                    
+    }                                                                                                  
+    media=(double)soma/n;                                                                              
+    return media;                                                                                      
+}                                                                                                      
+double calculate_deviation(int a[],int n,double soma){                                                 
+    double desvio=0;                                                                                   
+    for(int i=0;i<n-1;i++){                                                                            
+        desvio=soma-a[i];                                                                              
+        cout<<"The deviation between your numbers and the average is: "<<desvio<<endl;                 
+    }                                                                                                  
+}                                                                                                      
+double greater_than_average(int a[],int n,double soma){                                                
+    for(int i=0;i<n-1;i++){                                                                            
+        if(a[i]>soma){                                                                                 
+            cout<<"The numbers greater than the average are : \n"<<a[i]<<endl;                         
+        }                                                                                              
+    }                                                                                                  
+}                                                                                                      
+int main(){                                                                                            
+    int n=0;                                                                                           
+    int numbers=0;                                                                                     
+    int arr[100];                                                                                      
+    do{                                                                                                
+        cout<<"Say a number between 1 and 10(0 to exit): \n"<<endl;                                    
+        cin>>numbers;                                                                                  
+        arr[n]=numbers;                                                                                
+        n++;                                                                                           
+    }                                                                                                  
+    while(numbers>=1 && numbers<=10);                                                                  
+    double soma=average(arr,n-1);                                                                      
+    cout<<"The average is : "<<soma<<endl;                                                             
+    calculate_deviation(arr,n, average(arr,n-1));                                                      
+    greater_than_average(arr,n, average(arr,n-1));                                                     
+    return 0;                                                                                          
+}                                                                                                      
