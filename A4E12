@@ -1,0 +1,101 @@
+#include <iostream>
+using namespace std;
+int read_array(int a[]){
+    int N=0;
+    for (int i=0;i<50;i++){
+        int number;
+        cout<<"Say numbers: (0 to exit)\n"<<endl;
+        cin>>number;
+        if(number<=0){
+            break;
+        }
+        else{
+            a[i] = number;
+            N++;
+        }
+    }
+    return N;
+}
+double average(int a[],int N){
+    int sum;
+    for(int i=0;i<N;i++){
+        sum+=a[i];
+    }
+    return sum/N;
+}
+void write_array(int a[], int N){
+    cout<<"The Numbers of the array are: \n"<<endl;
+    for (int i=0; i<N;i++){
+        cout << a[i] <<"\n";
+    }
+}
+int max_value(int a[], int N){
+    int max=a[0];
+    for(int i=1;i<N;i++){
+        if(a[i]>max){
+            max=a[i];
+        }
+    }
+    return max;
+}
+int min_value(int a[],int N){
+    int min=a[0];
+    for(int i=1;i<N;i++){
+        if(a[i]<min){
+            min=a[i];
+        }
+    }
+    return min;
+}
+bool verify_odd_numbers(int a[], int N){
+    for(int i=0;i<N;i++){
+        if(a[i]%2){
+            return true;
+        }
+    }
+    return false;
+}
+int main(){
+    int choice=0;
+    int array[50];
+    int N=0;
+    do{
+        cout << "Analysis of a sequence of integers" << endl
+             << " 1 - Read a sequence" << endl
+             << " 2 - Write a sequence" << endl
+             << " 3 - Calculate the maximum value" << endl
+             << " 4 - Calculate the minimum value" << endl
+             << " 5 - Calculate the mean value" << endl
+             << " 6 - Test if the sequence includes only even numbers" << endl
+             << "10 - End the program" << endl
+             << "Choice -> ";
+        cin >> choice;
+        switch(choice){
+            case 1:
+                N= read_array(array);
+                break;
+            case 2:
+                write_array(array,N);
+                break;
+            case 3:
+                cout<<"The max value is: \n"<<max_value(array,N)<<endl;
+                break;
+            case 4:
+                cout<<"The min value is: \n"<<min_value(array,N)<<endl;
+                break;
+            case 5:
+                cout<<"The average is: \n"<<average(array,N)<<endl;
+                break;
+            case 6:
+                if(verify_odd_numbers(array,N)){
+                    cout<<"The sequence has atleast one odd number!"<<endl;
+                }
+                else{
+                    cout<<"The sequence is composed by only even numbers!"<<endl;
+                }
+                break;
+        }
+    }while(choice!=10);
+    cout<<"Goodbye my friend!"<<endl;
+    return 0;
+}
