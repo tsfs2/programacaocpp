@@ -1,0 +1,39 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int number_students(){
+    int students;
+    do{
+        cout<<"Say the number of students: \n"<<endl;
+        cin>>students;
+        if(students<0)cout<<"Invalid, say again! \n"<<endl;
+    }while(students<=0);
+    return students;
+}
+void writegrades_students(int a[], int n) {
+    while (n--) {
+        int grade;
+        cout << "Whats the grade?\n";
+        do {
+            cin >> grade;
+            if (grade > 20 || grade < 0)
+                cout << "Invalid grade, try again!" << endl;
+        } while (grade > 20 || grade < 0);
+        a[grade] += 1;
+    }
+}
+void hystogram(int a[]){
+    for(int i=20;i>=0;i--){
+        cout<<setw(2)<<setfill('0')<<i<<" | "<<setw(a[i])<< setfill('*')<<""<<endl;
+    }
+}
+int main(){
+    int students=number_students();
+    int grades[21];
+    for(int i=0;i<21;i++){
+        grades[i]=0;
+    }
+    writegrades_students(grades, students);
+    hystogram(grades);
+    return 0;
+}
