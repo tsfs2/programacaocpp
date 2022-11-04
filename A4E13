@@ -25,6 +25,7 @@ void writegrades_students(int a[], int n) {
 void hystogram(int a[]){
     for(int i=20;i>=0;i--){
         cout<<setw(2)<<setfill('0')<<i<<" | "<<setw(a[i])<< setfill('*')<<""<<endl;
+        
     }
 }
 int main(){
