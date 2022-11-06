@@ -1,0 +1,72 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int input_number(){
+    int n=0;
+    cout<<"Say a number between 1 and 10: \n"<<endl;
+    cin>>n;
+    while (n>10 || n<1){
+        cout<<"Invalid number, try again!"<<endl;
+        cout<<"Say a number between 1 and 10: \n"<<endl;
+        cin>>n;
+    }
+    return n;
+}
+int soma_aten(int N){
+    int soma;
+    for(int i=0;i<N;i++){
+        soma+=i;
+    }
+    return soma;
+}
+int numero_primo_divisores(int N){
+    cout<<"Os divisores sao: \n";
+    int primo;
+    for(int i=1;i<N;i++){
+        if(N%i==0){
+            cout<<i<<"  ";
+            primo=i;
+        }
+    }
+    if(primo == 1){
+        cout <<"\n O numero "<< N << " e primo!" << endl;
+    }
+    else{
+        cout <<"\n O numero "<<N << " nao e primo!" << endl;
+    }
+
+}
+void verifyarray(int a[],int N){
+    int counter=0;
+    for(int i=0;i<N;i++){
+        if(a[i]==N){
+            counter++;
+        }
+    }
+    cout<<"O numero "<<N<<" existe "<< counter <<" vezes!\n";
+}
+void tabelas(int a[],int a2[],int N){
+    for(int i=0;i<10;i++){
+        if(N>a2[i]){
+            cout<<a[i]<<setw(5)<<" | "<<setw(5)<<a2[i]<<setw(5)<<" | "<<" maior"<<endl;
+        }
+        else if(N<a2[i]){
+            cout<<a[i]<<setw(5)<<" | "<<setw(5)<<a2[i]<<setw(5)<<" | "<<" menor"<<endl;
+        }
+        else{
+            cout<<a[i]<<setw(5)<<" | "<<setw(5)<<a2[i]<<setw(5)<<" | "<<" igual"<<endl;
+        }
+    }
+
+}
+int main(){
+    int N;
+    N = input_number();
+    cout<<"A soma dos numeros ate ao valor indicado e: "<<soma_aten(N)<<endl;
+    numero_primo_divisores(N);
+    int numeros[]={1,9,5,7,9,6,8,3,9,3};
+    verifyarray(numeros,N);
+    int maisnumeros[]={10,3,2,5,2,5,3,7,8,4};
+    tabelas(numeros,maisnumeros,N);
+
+}
