@@ -1,0 +1,84 @@
+//Tiago Silva 112642
+#include <iostream>
+#include <iomanip>
+using namespace std;
+double calculaMedia(int array[],int array_size){
+    double soma;
+    for(int i=0;i<array_size;i++){
+        soma+=array[i];
+    }
+    return soma/array_size;
+
+}
+void somaDois(int *array,int array_size){
+    //for(int i=0;i<array_size;i++){
+     //   array[i]=array[i]+2;
+    //}
+    cout<<"\nO conteudo do array modificado e: \n";
+    for(int i=0;i<array_size;i++){
+        cout<<array[i]+2<<" ";
+    }
+    cout<<"\ng)";
+}
+void verificaParidade(int array[],int array_size){
+    cout<<"\nValor"<<setw(4)<<setfill('0')<<setfill('-')<<""<<"Paridade";
+    cout<<"\n"<<setw(17)<<setfill('0')<<setfill('-')<<"\n";
+    int counter;
+    for(int i=0;i<array_size;i++){
+        if(array[i]%2==0){
+            if((array[i]+2)>9){
+                //o numero do setw varia dependendo do numero de algarismos de cada numero modificado
+                // ate numeros com 2 algarismos (problema)
+                //while (array[i]+2!=0){
+                //array[i]+2=(array[i]+2)/10;
+                //counter++
+                //setw(12+counter)...
+                cout<<array[i]+2<<setw(14)<<setfill('-')<<"par"<<"\n";
+            }else
+            {
+                cout<<array[i]+2<<setw(15)<<setfill('-')<<"par"<<"\n";
+            }
+
+        }
+        else{
+            if((array[i]+2)>9){
+                cout<<array[i]+2<<setw(14)<<setfill('-')<<"impar"<<"\n";
+            }
+            else{
+                cout<<array[i]+2<<setw(15)<<setfill('-')<<"impar"<<"\n";
+
+            }
+
+        }
+    }
+}
+int main(){
+    int N;
+    cout<<"a)\n";
+    cout<<"Tiago Silva, 112642"<<endl;
+    cout<<"b)\n";
+    cout<<"Introduza um numero inteiro entre 4 e 16: ";
+    cin>>N;
+    while(N<4 || N>16){
+        cout<<"Numero invalido, tente novamente! \n"<<endl;
+        cin>>N;
+    }
+    cout<<"c)\n";
+    int arr[N];
+    int numeros;
+    for(int i=0;i<N;i++){
+        cout<<"Indique "<<N<<" valores inteiros: \n"<<endl;
+        cin>>numeros;
+        arr[i]=numeros;
+
+    }
+    cout<<"d) O conteudo do array e: \n";
+    for(int i=0;i<N;i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<"\ne)\nO valor da media e: "<<calculaMedia(arr,N);
+    cout<<"\nf)";
+    somaDois(arr,N);
+    verificaParidade(arr,N);
+ return 0;
+ }
