@@ -1,0 +1,47 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+typedef struct Point2D{
+    double x;
+    double y;
+}Point2D_t;
+
+Point2D_t read_ponto(void){
+    Point2D_t tmp;
+    cout<<"Say the x value of a point: \n";
+    cin>>tmp.x;
+    cout<<"Say the y value of the point: \n";
+    cin>>tmp.y;
+    return tmp;
+}
+void print_ponto(Point2D_t ponto){
+    cout<<"The coordinates of the first point is: "<<showpos<<setprecision(3)<<fixed<<"("<<ponto.x<<","<<ponto.y<<")\n";
+}
+float distance(Point2D_t p1,Point2D_t p2){
+    return sqrt(pow(p2.x-p1.x, 2) + pow(p2.y-p1.y, 2));
+}
+void program(){
+    Point2D_t tmp;
+    int counter=0;
+    int distance=0;
+    do{
+        cout<<"Say the coordinates of a point: \n";
+        cout<<"x: ";
+        cout<<"\ny: ";
+        cin>>tmp.x;
+        cin>>tmp.y;
+        counter++;
+        distance+=sqrt(pow(tmp.x, 2) + pow(tmp.y, 2));
+    }while(tmp.x!=0 && tmp.y!=0);
+    cout<<"The sum of the distance between the "<<counter<<" point to the origin is "<<distance<<endl;
+}
+int main(){
+    struct Point2D ponto;
+    Point2D_t ponto2;
+    ponto= read_ponto();
+    ponto2= read_ponto();
+    print_ponto(ponto);
+    cout<<"The distance between the 2 points is: \n"<<distance(ponto,ponto2)<<endl;
+    program();
+}
