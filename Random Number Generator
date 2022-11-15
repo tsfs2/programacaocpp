@@ -1,0 +1,23 @@
+//random number generator between 0-20
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+int main(){
+    int number;
+    srand(time(0));
+    cout<<"Press 1 to start!"<<endl;
+    cin>>number;
+    if(number!=1){
+        cout<<"Invalid number!";
+    }
+    else{
+        do{
+            int n=0;
+            cout<<"Press any number to generate a random number!"<<endl;
+            cin>>n;
+            cout<<"The random number is:  "<<(rand()%20)+1<<" \n";
+        }while(number==1);
+    }
+ return 0;
+ }
