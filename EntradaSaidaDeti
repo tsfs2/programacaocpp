@@ -1,0 +1,168 @@
+#include <iostream>
+
+#include <string>
+
+using namespace std;
+
+typedef struct {
+    int hour;
+    int min;
+    int sec;
+}Time;
+
+typedef struct {
+    string name;
+    int nmec;
+    Time entranceTime, exitTime, stayTime;
+}Student;
+
+void menu() {
+    cout << "a. Register a student" << endl;
+    cout << "b. List information about all the students (name, entrance time, exit time)" << endl;
+    cout << "c. Calculate the average length of stay in the department" << endl;
+    cout << "d. Terminate the program" << endl;
+    cout << "Choice -> ";
+}
+
+Time read_time() {
+    Time time;
+
+    cout << "Introduce a hour: " << endl;
+    cin >> time.hour;
+
+    while (time.hour < 0 || time.hour > 23) {
+        cout << "Introduce a valid hour (between 0 and 59, these included): " << endl;
+        cin >> time.hour;
+    }
+
+    cout << "Introduce the minutes: " << endl;
+    cin >> time.min;
+
+    while (time.min < 0 || time.min > 59) {
+        cout << "Introduce valid minutes (between 0 and 59, these included): " << endl;
+        cin >> time.min;
+    }
+
+    cout << "Introduce the seconds: " << endl;
+    cin >> time.sec;
+
+    while (time.sec < 0 || time.sec > 59) {
+        cout << "Introduce valid seconds (between 0 and 59, these included): " << endl;
+        cin >> time.sec;
+    }
+
+    return time;
+}
+
+Time time_inside(Student s) {
+
+    Time timeDETI = {0, 0, 0};
+    int t_in = s.entranceTime.hour * 3600 + s.entranceTime.min * 60 + s.entranceTime.sec;
+    int t_out = s.exitTime.hour * 3600 + s.exitTime.min * 60 + s.exitTime.sec;
+    int t_spent = t_out - t_in;
+    if (t_spent < 0) {
+        cout << "Impossible" << endl;
+    }
+    else {
+        timeDETI.hour = t_spent / 3600;
+        timeDETI.min =(t_spent % 3600) / 60;
+        timeDETI.sec = t_spent % 60;
+    }
+    return timeDETI;
+}
+
+Student ask_info() {
+    Student temp;
+    cout << "Introduce your name:" << endl;
+    cin.ignore();
+    getline (cin, temp.name);
+
+    do {
+        cout << "Introduce your mechanographic number: " << endl;
+        cin >> temp.nmec;
+    } while (temp.nmec < 0);
+    cout << "Introduza o tempo de entrada no DETI : " << endl;
+    temp.entranceTime = read_time();
+    cout << "Introduza o tempo de saida no DETI : " << endl;
+    temp.exitTime = read_time();
+    while ((temp.exitTime.hour < temp.entranceTime.hour) || (temp.exitTime.hour == temp.entranceTime.hour && temp.exitTime.min < temp.entranceTime.min) || (temp.exitTime.min == temp.entranceTime.min && temp.exitTime.sec < temp.entranceTime.sec)) {
+        cout << "Invalido! Introduza um tempo de saida correto : " << endl;
+        temp.exitTime = read_time();
+    }
+    temp.stayTime = time_inside(temp);
+    return temp;
+}
+
+void printStudent(Student s) {
+    cout << "O nome do aluno e: " << s.name << "." << endl;
+    cout << "O numero mecanografico do aluno e: " << s.nmec << "." << endl;
+    cout << "O aluno entrou as: " << s.entranceTime.hour << ":" << s.entranceTime.min << ":" << s.entranceTime.sec << "."
+         << endl;
+    cout << "O aluno saiu as: " << s.exitTime.hour << ":" << s.exitTime.min << ":" << s.exitTime.sec << "." << endl;
+    Time staytime = time_inside(s);
+    cout << "O aluno esteve no departamento " << staytime.hour << "h " << staytime.min << "m " << staytime.sec << "s." << endl;
+}
+
+Time averageTime(Time totalstayingtime, int nstudents) {
+    Time average;
+    int totalTime = (totalstayingtime.hour * 3600) + (totalstayingtime.min * 60) + totalstayingtime.sec;
+    int averagetime = totalTime / nstudents;
+    average.hour = averagetime / 3600;
+    average.min = (averagetime % 3600) / 60;
+    average.sec = averagetime % 60;
+    return average;
+}
+
+int main() {
+    int nstudents = 0;
+    Time totalstayingtime, partialstayingtime;
+    totalstayingtime.hour = totalstayingtime.min = totalstayingtime.sec = 0;
+    int temptime = 0;
+
+    char choice;
+    Student* ar = 0;
+    int size = 0;
+    Student infoStudent;
+
+    do {
+        menu();
+        cin >> choice;
+        switch (choice) {
+            case 'a': {
+                size++;
+                Student* temp = new Student[size];
+                for(int i = 0; i < size - 1; i++) {
+                    temp[i] = ar[i];
+                }
+                temp[size - 1] = ask_info();
+
+                delete [] ar;
+                ar = temp;
+                infoStudent = temp[size - 1];
+
+                partialstayingtime = infoStudent.stayTime;
+
+                temptime = temptime + (partialstayingtime.hour * 3600) + (partialstayingtime.min * 60) + partialstayingtime.sec;
+                partialstayingtime.hour = partialstayingtime.min = partialstayingtime.sec = 0;
+
+            }
+                break;
+            case 'b': {
+                for (int i = 0; i < size; i++) {
+                    printStudent(ar[i]);
+                }
+            }
+                break;
+            case 'c': {
+                totalstayingtime.hour = temptime / 3600;
+                totalstayingtime.min = (temptime % 3600) / 60;
+                totalstayingtime.sec = temptime % 60;
+                Time average = averageTime(totalstayingtime, size);
+                cout << "O tempo medio foi : " << average.hour << ":" << average.min << ":" << average.sec << endl;
+            }
+                break;
+        }
+    } while (choice != 'd');
+
+    return 0;
+}
