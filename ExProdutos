@@ -1,0 +1,93 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <vector>
+using namespace std;
+typedef struct Produto{
+    string nome;
+    double preco;
+    int quantidade;
+}Produto_t;
+Produto_t lerinfoproduto(){
+    Produto produto;
+    cout<<"Diz o nome do produto: ($ para sair)\n";
+    getline(cin,produto.nome,'$');
+    cout<<"Diz o preco do produto: \n";
+    cin>>produto.preco;
+    cout<<"Diz a quantidade do produto: \n";
+    cin>>produto.quantidade;
+
+    return produto;
+}
+int mostrarinfoproduto(Produto_t produto){
+        cout<<"Informacoes sobre o produto: \n";
+        cout<<"Nome: "<<produto.nome<<"\n"<<endl;
+        cout<<"Preco: "<<produto.preco<<"\n"<<endl;
+        cout<<"Quantidade: "<<produto.quantidade<<"\n"<<endl;
+    return 0;
+}
+int lista_aquisicoes(Produto_t produto){
+
+
+
+}
+int main(){
+    Produto_t tmp;
+    vector <Produto_t> lista;
+    int b=lista.size();
+    char opcao=0;
+    do{
+        cout<<"Insira uma opcao: \n";
+        cout<<"a) Inserir o produto\n";
+        cout<<"b) Imprimir a lista de produtos\n";
+        cout<<"c) Imprimir a lista de aquisicoes\n";
+        cout<<"d) Pesquisar por um produto\n";
+        cout<<"e) Calcular o valor em stock\n";
+        cout<<"f) Aplicar inflacao de 10% \n";
+        cout<<"g) Exportar a lista de produtos para um ficheiro\n";
+        cout<<"h) Importar uma lista de produto de um ficheiro\n";
+        cout<<"i) Sair \n";
+        cin>>opcao;
+        switch (opcao){
+            case 'a':
+                tmp = lerinfoproduto();
+                lista.push_back(tmp);
+                break;
+            case 'b':
+                for(int i=0;i<lista.size();i++){
+                    mostrarinfoproduto(lista[i]);
+                }
+                break;
+            case 'c':
+                //imprimir lista de produtos com quantidade<5
+                for(int i=0;i<lista.size();i++){
+                    
+                }
+                break;
+            case 'd':
+                //pesquisar por um produto
+                for(int i=0;i<b;i++){
+                    pesquisaproduto(lista[i]);
+                }
+                break;
+            case 'e':
+                //calcular o valor em stock
+
+                break;
+            case 'f':
+                //inflacao 10%
+
+                break;
+            case 'g':
+
+                break;
+            case 'h':
+
+                break;
+            default:
+                cout << "opcao invalida";
+        }
+    }while(opcao!='i');
+    cout<<"Adeus"<<endl;
+    return 0;
+}
