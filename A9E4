@@ -1,0 +1,30 @@
+//atencao que e preciso ir a pasta cmakebuild-debug e criar um ficheiro txt e meter lá coisas
+//tenho que adaptar o codigo para fazer tudo automatico com../
+#include <iostream>
+#include <fstream>
+#include <string.h>
+using namespace std;
+int main(){
+    char line[80],fname[25];
+    int i,len,count=0;
+    cout<<"Enter filename: ";
+    cin>>fname;
+    ifstream fin;
+    fin.open(fname,ios::in);
+    if(!fin){
+        cout<<fname<<"file does not exist... \n";
+        exit(0);
+    }
+    cout<<"\nCotests of a file: \n\n";
+    while(fin.eof()==0){
+        fin.getline(line,sizeof(line));
+        len=strlen(line);
+        for(i=0;i<len;i++){
+            count++;
+        }
+        cout<<line<<"\n";
+    }
+    fin.close();
+    cout<<"\nNo. of characters in a file= "<<count<<endl;
+    return 0;
+}
