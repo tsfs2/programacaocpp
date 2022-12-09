@@ -1,0 +1,26 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+using namespace std;
+int main(int argc,char* argv[]){
+    ifstream in("../in.txt");
+    int readNumber;
+    vector<int> numberVector;
+    while(in>>readNumber){
+        numberVector.push_back(readNumber);
+    }
+    cout<<"All the numbers have 1 digit!\n";
+    cout <<"The number of numbers in this file is : \n"<<numberVector.size()<<endl;
+    int userNumber;
+    do{
+        int counter=0;
+        cout<<"Please enter the number you want to check the presence of: (1 digit)\n";
+        cin>>userNumber;
+        for(int i=0;i<numberVector.size();i++){
+            if(userNumber==numberVector[i]){
+                counter++;
+            }
+        }
+        cout<<"The "<<userNumber<<" has occured "<<counter<<" times"<<endl;
+    }while(true);
+ }
