@@ -1,0 +1,19 @@
+//Program to print everything that is in the lines of the file
+//without any vector
+#include <iostream>
+#include <fstream>
+using namespace std;
+int main() {
+    ifstream namestudents;
+    namestudents.open("../alunos.txt");
+    if (!namestudents.is_open()) {
+        cout << "Error opening the file\n";
+        return 0;
+    }
+    string line;
+    while (getline(namestudents, line)) {
+        cout << line << endl;
+    }
+    namestudents.close();
+    return 0;
+}
