@@ -1,0 +1,39 @@
+//this example has a pointer in the show function that substitutes the value of the number by 0
+#include <iostream>
+using namespace std;
+struct student{
+    int rollno;
+    char sex;
+    int age;
+};
+void display(student s){
+    cout<<s.rollno<<endl;
+    cout<<s.sex<<endl;
+    cout<<s.age<<endl;
+    s.rollno=0000;
+}
+void show(student *s){
+    cout<<s->rollno<<endl;
+    cout<<s->sex<<endl;
+    cout<<s->age<<endl;
+    s->rollno=0000;
+}
+student ask(student s){
+    cout<<"Say the number: \n";
+    cin>>s.rollno;
+    cout<<"Say the sex(m/f): \n";
+    cin>>s.sex;
+    cout<<"Say the age: \n";
+    cin>>s.age;
+    return s;
+}
+int main(){
+    student tmp;
+    ask(tmp);
+    student anil;
+    anil=ask(tmp);
+    show(&anil);
+    cout<<"\n";
+    display(anil);
+ return 0;
+ }
