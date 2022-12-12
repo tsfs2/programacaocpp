@@ -1,0 +1,110 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+int main(){
+    vector <int> numbers;
+    int numerosvetor=1;
+    int max;
+    int min;
+    int counter=0;
+    int soma=0;
+    int media=0;
+    int valueasked;
+    while(true){
+        cout<<"1-Read a sequence "<<endl;
+        cout<<"2-Write the sequence in the screen "<<endl;
+        cout<<"3-Calculate the maximum value "<<endl;
+        cout<<"4-Calculate the minimum value "<<endl;
+        cout<<"5-Calculate the average value "<<endl;
+        cout<<"6-Detect if the sequence is constituted by only even values "<<endl;
+        cout<<"7-Order the sequence in ascending order "<<endl;
+        cout<<"8-Search the sequence for a value "<<endl;
+        cout<<"9-Order the sequence in descending order "<<endl;
+        cout<<"10-End program "<<endl;
+        cout<<"Enter your choice"<<endl;
+        int choice;
+        cin>>choice;
+        switch(choice){
+            case 1:
+                do{
+                    cout<<"Say numbers: (0 to exit)\n";
+                    cin>>numerosvetor;
+                    numbers.push_back(numerosvetor);
+                }while(numerosvetor!=0);
+                numbers.pop_back();
+                break;
+            case 2:
+                cout<<"Numbers introduced: \n";
+
+                for(int i=0;i<numbers.size();i++){
+                    cout<<numbers[i];
+                }
+                cout<<"\n";
+
+                break;
+            case 3:
+                max = *max_element(numbers.begin(), numbers.end());
+                cout << "the max element is: \n" << max << endl;
+                break;
+
+            case 4:
+                min = *min_element(numbers.begin(), numbers.end());
+                cout << "the min element is: \n" << min << endl;
+                break;
+            case 5:
+                for(int i=0;i<numbers.size();i++){
+                    soma+=numbers[i];
+                }
+                media=soma/numbers.size();
+                cout<<"The average value is  "<<media<<endl;
+                break;
+            case 6:
+                for(int i=0;i<numbers.size();i++){
+                    if(numbers[i]%2==0){
+                        counter++;
+                    }
+                    if(counter==numbers.size()){
+                        cout<<"All numbers are odd!\n";
+                    }
+                    else{
+                        cout<<"The sequence has even numbers!\n";
+                    }
+                }
+                break;
+            case 7:
+
+                sort(numbers.begin(), numbers.end());
+
+                for (const auto &i: numbers) {
+                    cout << i << ' ';
+                }
+                cout<<"\n";
+
+                break;
+            case 8:
+                cout<<"Say a number to search in the sequence: \n";
+                cin>>valueasked;
+                for(int i=0;i<numbers.size();i++){
+                    if(numbers[i]==valueasked){
+                        cout<<"The "<<valueasked<<"is at the position "<<i+1<<endl;
+                    }
+                }
+                break;
+            case 9:
+                sort(numbers.begin(), numbers.end(),greater<int>());
+
+                for (const auto &i: numbers) {
+                    cout << i << ' ';
+                }
+                cout<<"\n";
+
+                break;
+            case 10:
+                return 0;
+            default:
+                cout<<"Invalid choice"<<endl;
+                break;
+        }
+    }
+ }
