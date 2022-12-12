@@ -1,0 +1,61 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+int main() {
+    ifstream namestudents("../palavras.txt");
+    if (!namestudents.is_open()) {
+        cout << "Error opening the file\n";
+        return 0;
+    }
+    string line;
+    vector <string> stringz;
+    int counter=0;
+    string readstring;
+    //to put everything in a vector called namevector
+    while(namestudents>>readstring){
+        stringz.push_back(readstring);
+    }
+    cout<<"The number of names in this file are: "<<stringz.size()<<endl;
+    //now we are going to check  how many times a certain string exist in the file
+    cout<<"Say a name to verify how many times it exists in the file: \n";
+    getline(cin,readstring);
+    for(int i=0;i<stringz.size();i++){
+        if(readstring==stringz[i]){
+            counter++;
+        }
+    }
+    cout<<"The "<<readstring<<" appeared in the file "<<counter<<" times"<<endl;
+    //to print everything in the lines of the file
+    while (getline(namestudents, line)) {
+        cout << line << endl;
+    }
+    //sorting alphabetically ascending
+    cout<<"Ascending\n";
+    cout<<"\n";
+    cout<<"The file sorting alphabetically is: \n";
+    for (const auto &item : stringz) {
+        cout << item << "; ";
+    }
+    cout << endl;
+    sort(stringz.begin(),stringz.end());
+    for (const auto &item : stringz) {
+        cout << item << "; ";
+    }
+    cout << endl;
+    //sorting descending alphabetically
+    cout<<"Descending: \n"<<endl;
+    cout<<"\n";
+    for (const auto &item : stringz) {
+        cout << item << "; ";
+    }
+    cout << endl;
+    sort(stringz.begin(),stringz.end(),greater<string>());
+    for (const auto &item : stringz) {
+        cout << item << "; ";
+    }
+    cout << endl;
+
+    exit(EXIT_SUCCESS);
+}
